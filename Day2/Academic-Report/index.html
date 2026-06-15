@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Academic Report</title>
+</head>
+
+<body>
+    <h2>Academic Report</h2>
+    <p id="maths">Maths: </p>
+    <p id="physics">Physics: </p>
+    <p id="chemistry">Chemistry: </p>
+    <p id="english">English: </p>
+    <p id="computer">Computer: </p>
+    <p id="total">Total: </p>
+    <p>Average: <span id="average"></span></p>
+    <p>Percentage: <span id="percentage"></span></p>
+    
+</body>
+<script>
+        var maths = 90;
+        var physics = 85;
+        var chemistry = 80;
+        var english = 95;
+        var computer = 100;
+
+        var total = maths + physics + chemistry + english + computer;
+        var average = total / 5;
+        var percentage = (total / 500) * 100;
+
+        document.getElementById("maths").textContent = "maths: " + maths;
+        document.getElementById("physics").textContent = "physics: " + physics;
+        document.getElementById("chemistry").textContent = "chemistry: " + chemistry;
+        document.getElementById("english").textContent = "english: " + english;
+        document.getElementById("computer").textContent = "computer: " + computer;
+        document.getElementById("total").textContent = "total: " + total;
+        document.getElementById("average").textContent = "Average: " + average;
+        document.getElementById("percentage").textContent = "Percentage: " + percentage + "%";
+    </script>
+</html>
