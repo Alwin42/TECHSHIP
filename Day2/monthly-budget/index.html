@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Budget Tracker</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            background-color: #ececec;
+        }
+    </style>
+</head>
+<body>
+    <h1>Monthly Budget Tracker</h1>
+    <form>
+        <h2>Income</h2>
+        <input type="number" id="Income" placeholder="Enter your income"><br>
+        <h2>Food Expense</h2>
+        <input type="number" id="Food-expense" placeholder="Enter your food expense"><br>
+        <h2>Travel Expense</h2>
+        <input type="number" id="Travel-expense" placeholder="Enter your travel expense"><br>
+        <h2>Entertainment Expense</h2>
+        <input type="number" id="Entertainment-expense" placeholder="Enter entertainment expense"><br>
+        <h2>Miscellaneous Expense</h2>
+        <input type="number" id="Miscellaneous-expense" placeholder="Enter your miscellaneous expense"><br>
+    </form>
+    <br>
+    <button onclick="calculateBudget()">Calculate Budget</button>
+    
+    <h2 id="total-expense"></h2>
+    <h2 id="savings"></h2>
+    <h2 id="expense-percentage"></h2>
+
+    <script>
+        function calculateBudget() {
+            
+            
+            var income = parseInt(document.getElementById("Income").value) || 0;
+            var foodExpense = parseInt(document.getElementById("Food-expense").value) || 0;
+            var travelExpense = parseInt(document.getElementById("Travel-expense").value) || 0;
+            var entertainmentExpense = parseInt(document.getElementById("Entertainment-expense").value) || 0;
+            var miscellaneousExpense = parseInt(document.getElementById("Miscellaneous-expense").value) || 0;
+            var totalExpense = foodExpense + travelExpense + entertainmentExpense + miscellaneousExpense;
+            var savings = income - totalExpense;
+            var expensePercentage = income > 0 ? (totalExpense / income) * 100 : 0;
+            document.getElementById("total-expense").innerHTML = "Total Expense: " + totalExpense;
+            document.getElementById("savings").innerHTML = "Savings: " + savings;
+            document.getElementById("expense-percentage").innerHTML = "Expense Percentage: " + expensePercentage.toFixed(2) + "%";
+        }
+    </script>
+</body>
+</html>
