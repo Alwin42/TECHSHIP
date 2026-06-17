@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Age Classification</title>
+</head>
+<body style="text-align: center; font-family: Arial, sans-serif;">
+    <h2>Age Classification System</h2>
+    <input type="number" id="ageInput" placeholder="Enter your age">
+    <button onclick="classifyAge()">Check Category</button>
+    <h3 id="ageResult"></h3>
+
+    <script>
+        function classifyAge() {
+            let age = Number(document.getElementById("ageInput").value);
+            let category = "";
+
+            if (age < 0) {
+                category = "Please enter a valid age.";
+            } else if (age <= 12) {
+                category = "Child";
+            } else if (age <= 19) {
+                category = "Teenager";
+            } else if (age < 65) {
+                category = "Adult";
+            } else {
+                category = "Senior Citizen";
+            }
+
+            document.getElementById("ageResult").textContent = "Category: " + category;
+        }
+    </script>
+</body>
+</html>

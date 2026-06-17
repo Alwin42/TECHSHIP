@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Mobile Recharge</title>
+    <style>body { font-family: Arial, sans-serif; text-align: center; padding: 20px; }</style>
+</head>
+<body>
+    <h2>Mobile Plan Recommender</h2>
+    <input type="number" id="budget" placeholder="Budget (₹)"><br><br>
+    <input type="number" id="data" placeholder="Daily Data Needed (GB)"><br><br>
+    <button onclick="recommend()">Find Plan</button>
+    <h3 id="result"></h3>
+
+    <script>
+        function recommend() {
+            let budget = Number(document.getElementById("budget").value) || 0;
+            let data = Number(document.getElementById("data").value) || 0;
+            let res = document.getElementById("result");
+
+            if (budget >= 500 && data >= 2) res.innerText = "Premium Plan (Unlimited 5G)";
+            else if (budget >= 299 && data >= 1.5) res.innerText = "Standard Plan (1.5GB/Day)";
+            else res.innerText = "Basic Plan (1GB/Day)";
+        }
+    </script>
+</body>
+</html>

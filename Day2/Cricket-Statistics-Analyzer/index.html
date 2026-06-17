@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Cricket Stats</title>
+    <style>body { font-family: Arial, sans-serif; text-align: center; padding: 20px; }</style>
+</head>
+<body>
+    <h2>Cricket Statistics Analyzer</h2>
+    <p>Click the button to enter scores for 10 matches via popups.</p>
+    <button onclick="analyze()">Start Entering Scores</button>
+    <h3 id="result"></h3>
+
+    <script>
+        function analyze() {
+            let total = 0;
+            let highest = -1; 
+            let lowest = 999999; 
+
+            for (let i = 1; i <= 10; i++) {
+                let input = prompt(`Enter runs scored in Match ${i}:`);
+                let runs = Number(input) || 0;
+                
+                total += runs;
+                if (runs > highest) highest = runs;
+                if (runs < lowest) lowest = runs;
+            }
+
+            let avg = total / 10;
+            document.getElementById("result").innerText = 
+                `Total: ${total} | Average: ${avg} | Highest: ${highest} | Lowest: ${lowest}`;
+        }
+    </script>
+</body>
+</html>

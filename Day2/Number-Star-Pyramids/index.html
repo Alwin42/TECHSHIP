@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Pyramids</title>
+    <style>body { font-family: Arial, sans-serif; text-align: center; padding: 20px; } pre { display: inline-block; text-align: left; background: #eee; padding: 20px; border-radius: 5px; font-size: 20px; }</style>
+</head>
+<body>
+    <h2>Pyramid Generator</h2>
+    <button onclick="pyramid1()">Pattern 1</button>
+    <button onclick="pyramid2()">Pattern 2</button>
+    <button onclick="pyramid3()">Pattern 3</button>
+    <br><br>
+    <pre id="display">Click a button</pre>
+
+    <script>
+        function pyramid1() {
+            let result = "";
+            for (let i = 1; i <= 5; i++) {
+                for (let j = 1; j <= i; j++) result += j;
+                result += "\n";
+            }
+            document.getElementById("display").innerText = result;
+        }
+
+        function pyramid2() {
+            let result = "";
+            for (let i = 5; i >= 1; i--) {
+                for (let j = 1; j <= i; j++) result += j;
+                result += "\n";
+            }
+            document.getElementById("display").innerText = result;
+        }
+
+        function pyramid3() {
+            let result = "";
+            for (let i = 1; i <= 5; i++) {
+                for (let j = 1; j <= i; j++) result += "*";
+                result += "\n";
+            }
+            document.getElementById("display").innerText = result;
+        }
+    </script>
+</body>
+</html>

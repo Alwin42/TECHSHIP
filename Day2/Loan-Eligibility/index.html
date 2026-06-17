@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Loan Eligibility</title>
+    <style>body { font-family: Arial, sans-serif; text-align: center; padding: 20px; }</style>
+</head>
+<body>
+    <h2>Loan Eligibility Checker</h2>
+    <input type="number" id="age" placeholder="Age"><br><br>
+    <input type="number" id="salary" placeholder="Monthly Salary (₹)"><br><br>
+    <input type="number" id="loan" placeholder="Existing Loan (₹)"><br><br>
+    <button onclick="checkLoan()">Check Approval</button>
+    <h3 id="result"></h3>
+
+    <script>
+        function checkLoan() {
+            let age = Number(document.getElementById("age").value) || 0;
+            let sal = Number(document.getElementById("salary").value) || 0;
+            let loan = Number(document.getElementById("loan").value) || 0;
+            let res = document.getElementById("result");
+
+            if (age >= 21 && sal >= 25000 && loan < 500000) {
+                res.innerText = "Loan Approved!";
+            } else {
+                let reason = "Rejected: ";
+                if (age < 21) reason += "Age under 21. ";
+                if (sal < 25000) reason += "Salary too low. ";
+                if (loan >= 500000) reason += "Existing loan too high.";
+                res.innerText = reason;
+            }
+        }
+    </script>
+</body>
+</html>

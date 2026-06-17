@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Admission Predictor</title>
+    <style>body { font-family: Arial, sans-serif; text-align: center; padding: 20px; }</style>
+</head>
+<body>
+    <h2>University Admission Predictor</h2>
+    <input type="number" id="score" placeholder="Entrance Score (0-100)"><br><br>
+    <button onclick="predict()">Check Status</button>
+    <h3 id="result"></h3>
+
+    <script>
+        function predict() {
+            let score = Number(document.getElementById("score").value) || 0;
+            let res = document.getElementById("result");
+
+            if (score >= 90) res.innerText = "Status: Direct Admission ";
+            else if (score >= 75) res.innerText = "Status: Interview Round ";
+            else if (score >= 50) res.innerText = "Status: Waitlisted ";
+            else res.innerText = "Status: Rejected ";
+        }
+    </script>
+</body>
+</html>

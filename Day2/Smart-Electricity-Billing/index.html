@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Electricity Bill</title>
+    <style>body { font-family: Arial, sans-serif; text-align: center; padding: 20px; }</style>
+</head>
+<body>
+    <h2>Smart Electricity Billing System</h2>
+    <input type="number" id="units" placeholder="Units Consumed"><br><br>
+    <button onclick="calculateBill()">Generate Bill</button>
+    <h3 id="result"></h3>
+
+    <script>
+        function calculateBill() {
+            let units = Number(document.getElementById("units").value) || 0;
+            let bill = 0;
+
+            if (units <= 100) {
+                bill = units * 5;
+            } else if (units <= 200) {
+                bill = (100 * 5) + ((units - 100) * 7);
+            } else {
+                bill = (100 * 5) + (100 * 7) + ((units - 200) * 10);
+            }
+
+            let totalWithFixed = bill + 150; 
+            let finalBill = totalWithFixed + (totalWithFixed * 0.18); 
+
+            document.getElementById("result").innerText = `Final Bill (incl. Fixed + 18% GST): ₹${finalBill.toFixed(2)}`;
+        }
+    </script>
+</body>
+</html>

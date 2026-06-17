@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Series Generator</title>
+    <style>
+        body { text-align: center; font-family: Arial, sans-serif; }
+        button { margin: 5px; padding: 10px; cursor: pointer; }
+        #seriesResult { word-wrap: break-word; max-width: 600px; margin: 20px auto; line-height: 1.5; }
+    </style>
+</head>
+<body>
+    <h2>Number Series Generator</h2>
+    
+    <button onclick="generate1to100()">1 to 100</button>
+    <button onclick="generate100to1()">100 to 1</button>
+    <button onclick="generateEvens()">Even Numbers (1-100)</button>
+    <button onclick="generateOdds()">Odd Numbers (1-100)</button>
+
+    <div id="seriesResult"></div>
+
+    <script>
+        function generate1to100() {
+            let result = [];
+            for (let i = 1; i <= 100; i++) {
+                result.push(i);
+            }
+            
+            document.getElementById("seriesResult").textContent = result.join(", ");
+        }
+
+        function generate100to1() {
+            let result = [];
+            for (let i = 100; i >= 1; i--) {
+                result.push(i);
+            }
+            document.getElementById("seriesResult").textContent = result.join(", ");
+        }
+
+        function generateEvens() {
+            let result = [];
+            for (let i = 2; i <= 100; i += 2) {
+                result.push(i);
+            }
+            document.getElementById("seriesResult").textContent = result.join(", ");
+        }
+
+        function generateOdds() {
+            let result = [];
+            for (let i = 1; i <= 100; i += 2) {
+                result.push(i);
+            }
+            document.getElementById("seriesResult").textContent = result.join(", ");
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Parking Fee</title>
+    <style>body { font-family: Arial, sans-serif; text-align: center; padding: 20px; }</style>
+</head>
+<body>
+    <h2>Parking Fee Calculator</h2>
+    <input type="number" id="hours" placeholder="Hours Parked"><br><br>
+    <button onclick="calcParking()">Calculate Fee</button>
+    <h3 id="result"></h3>
+
+    <script>
+        function calcParking() {
+            let hours = Number(document.getElementById("hours").value) || 0;
+            let fee = 0;
+
+            if (hours <= 2) {
+                fee = hours * 20;
+            } else if (hours <= 5) {
+                fee = (2 * 20) + ((hours - 2) * 30);
+            } else {
+                fee = (2 * 20) + (3 * 30) + ((hours - 5) * 50);
+            }
+            document.getElementById("result").innerText = `Total Parking Fee: ₹${fee}`;
+        }
+    </script>
+</body>
+</html>

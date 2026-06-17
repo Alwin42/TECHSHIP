@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Student Information System</title>
+    <style>
+        body { font-family: Arial, sans-serif; background-color: #f4f4f9; padding: 20px; }
+        .container { max-width: 800px; margin: auto; background: white; padding: 20px; border-radius: 8px; box-shadow: 0 4px 8px rgba(0,0,0,0.1); }
+        h2 { text-align: center; color: #333; }
+        .section { margin-bottom: 20px; padding: 15px; background: #eef2f5; border-radius: 5px; }
+        .section h3 { margin-top: 0; color: #0056b3; }
+        input { margin: 5px 0; padding: 8px; width: calc(50% - 22px); border: 1px solid #ccc; border-radius: 4px; }
+        input[type="text"] { width: calc(100% - 22px); }
+        button { display: block; width: 100%; padding: 15px; background: #28a745; color: white; border: none; border-radius: 5px; font-size: 18px; cursor: pointer; }
+        button:hover { background: #218838; }
+        
+        
+        pre { background: #2b2b2b; color: #00ff00; padding: 20px; border-radius: 5px; font-size: 16px; overflow-x: auto; line-height: 1.5; }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <h2> Student Evaluation System</h2>
+
+    <div id="inputForm">
+        <div class="section">
+            <h3>Student Profile</h3>
+            <input type="text" id="sName" placeholder="Full Name">
+            <input type="text" id="sRoll" placeholder="Roll Number">
+            <input type="text" id="sCourse" placeholder="Course (e.g., B.Tech)">
+            <input type="number" id="sYear" placeholder="Year of Study">
+        </div>
+
+        <div class="section">
+            <h3>Academic Marks (Out of 100)</h3>
+            <input type="number" id="m1" placeholder="Subject 1">
+            <input type="number" id="m2" placeholder="Subject 2">
+            <input type="number" id="m3" placeholder="Subject 3">
+            <input type="number" id="m4" placeholder="Subject 4">
+            <input type="number" id="m5" placeholder="Subject 5">
+        </div>
+
+        <div class="section">
+            <h3>Attendance & Financials</h3>
+            <input type="number" id="aTotal" placeholder="Total Classes Held">
+            <input type="number" id="aAttend" placeholder="Classes Attended">
+            <input type="number" id="income" placeholder="Family Income (₹)">
+        </div>
+
+        <button onclick="generateReport()">Generate Final Report</button>
+    </div>
+
+    <pre id="reportOutput" style="display: none;"></pre>
+</div>
+
+<script>
+    function generateReport() {
+        // 1. Gather Profile Data
+        let name = document.getElementById("sName").value || "Unknown";
+        let roll = document.getElementById("sRoll").value || "N/A";
+        let course = document.getElementById("sCourse").value || "N/A";
+        let year = document.getElementById("sYear").value || "N/A";
+
+        // 2. Gather & Calculate Academic Data
+        let m1 = Number(document.getElementById("m1").value) || 0;
+        let m2 = Number(document.getElementById("m2").value) || 0;
+        let m3 = Number(document.getElementById("m3").value) || 0;
+        let m4 = Number(document.getElementById("m4").value) || 0;
+        let m5 = Number(document.getElementById("m5").value) || 0;
+
+        let totalMarks = m1 + m2 + m3 + m4 + m5;
+        let maxMarks = 500; 
+        let percentage = (totalMarks / maxMarks) * 100;
+
+        // Determine Grade based on Percentage
+        let grade = "";
+        if (percentage >= 90) grade = "A (Outstanding)";
+        else if (percentage >= 80) grade = "B (Excellent)";
+        else if (percentage >= 70) grade = "C (Good)";
+        else if (percentage >= 60) grade = "D (Average)";
+        else grade = "F (Fail)";
+
+        // 3. Gather & Calculate Attendance
+        let tClasses = Number(document.getElementById("aTotal").value) || 0;
+        let aClasses = Number(document.getElementById("aAttend").value) || 0;
+        let attPercentage = tClasses > 0 ? (aClasses / tClasses) * 100 : 0;
+        
+        let examEligible = attPercentage >= 75 ? "YES" : "NO (Requires 75%)";
+
+        // 4. Scholarship Evaluation
+        let income = Number(document.getElementById("income").value) || 0;
+        let scholarship = "";
+        // Rules from your previous challenge
+        if (percentage >= 75 && attPercentage >= 85 && income < 300000) {
+            scholarship = "APPROVED ";
+        } else {
+            scholarship = "DENIED ";
+        }
+
+        // 5. Generate the Final Text Report using Template Literals (Backticks ` )
+        let report = `
+======================================================
+             FINAL STUDENT EVALUATION REPORT
+======================================================
+
+[ STUDENT PROFILE ]
+------------------------------------------------------
+Name            : ${name}
+Roll Number     : ${roll}
+Course          : ${course}
+Year of Study   : ${year}
+
+[ ACADEMIC SUMMARY ]
+------------------------------------------------------
+Marks Obtained  : ${totalMarks} / ${maxMarks}
+Average Marks   : ${(totalMarks / 5).toFixed(2)}
+Percentage      : ${percentage.toFixed(2)}%
+Final Grade     : ${grade}
+
+[ ATTENDANCE SUMMARY ]
+------------------------------------------------------
+Total Classes   : ${tClasses}
+Classes Attended: ${aClasses}
+Attendance %    : ${attPercentage.toFixed(2)}%
+Exam Eligibility: ${examEligible}
+
+[ SCHOLARSHIP STATUS ]
+------------------------------------------------------
+Family Income   : ₹${income}
+Status          : ${scholarship}
+
+======================================================
+  End of Report - Generated automatically by system
+======================================================`;
+
+        // Display the report and hide the form for a clean look
+        let outputArea = document.getElementById("reportOutput");
+        outputArea.textContent = report;
+        outputArea.style.display = "block";
+    }
+</script>
+
+</body>
+</html>

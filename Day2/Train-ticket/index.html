@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Train Fare</title>
+    <style>body { font-family: Arial, sans-serif; text-align: center; padding: 20px; }</style>
+</head>
+<body>
+    <h2>Train Ticket Fare Calculator</h2>
+    <input type="number" id="fare" placeholder="Base Ticket Fare (₹)"><br><br>
+    <input type="number" id="age" placeholder="Passenger Age"><br><br>
+    <select id="gender">
+        <option value="M">Male</option>
+        <option value="F">Female</option>
+    </select><br><br>
+    <button onclick="calcFare()">Calculate Final Fare</button>
+    <h3 id="result"></h3>
+
+    <script>
+        function calcFare() {
+            let fare = Number(document.getElementById("fare").value) || 0;
+            let age = Number(document.getElementById("age").value) || 0;
+            let gender = document.getElementById("gender").value;
+            let discount = 0;
+
+            // Apply logical discount rules
+            if (age >= 60) {
+                discount = 0.50; 
+            } else if (age <= 12) {
+                discount = 0.50; 
+            } else if (gender === 'F') {
+                discount = 0.10; 
+            }
+
+            let finalFare = fare - (fare * discount);
+            document.getElementById("result").innerText = `Final Fare: ₹${finalFare.toFixed(2)}`;
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Employee Evaluation</title>
+    <style>body { font-family: Arial, sans-serif; text-align: center; padding: 20px; }</style>
+</head>
+<body>
+    <h2>Employee Evaluation (Scores 0-100)</h2>
+    <input type="number" id="att" placeholder="Attendance Score"><br><br>
+    <input type="number" id="task" placeholder="Task Score"><br><br>
+    <input type="number" id="proj" placeholder="Project Score"><br><br>
+    <button onclick="evaluateEmp()">Evaluate</button>
+    <h3 id="result"></h3>
+
+    <script>
+        function evaluateEmp() {
+            let att = Number(document.getElementById("att").value) * 0.20;
+            let task = Number(document.getElementById("task").value) * 0.30;
+            let proj = Number(document.getElementById("proj").value) * 0.50;
+            
+            let total = att + task + proj;
+            let rating = "";
+
+            if (total >= 90) rating = "Outstanding";
+            else if (total >= 75) rating = "Excellent";
+            else if (total >= 50) rating = "Good";
+            else rating = "Needs Improvement";
+
+            document.getElementById("result").innerText = `Score: ${total.toFixed(2)} - Rating: ${rating}`;
+        }
+    </script>
+</body>
+</html>

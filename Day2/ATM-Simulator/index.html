@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>ATM Simulator</title>
+    <style>body { font-family: Arial, sans-serif; text-align: center; padding: 20px; }</style>
+</head>
+<body>
+    <h2>ATM Simulator</h2>
+    <h3>Current Balance: ₹<span id="balance">5000</span></h3>
+    <input type="number" id="amount" placeholder="Enter Amount (₹)"><br><br>
+    <button onclick="transact('deposit')">Deposit</button>
+    <button onclick="transact('withdraw')">Withdraw</button>
+    <p id="msg"></p>
+
+    <script>
+        let balance = 5000;
+
+        function transact(type) {
+            let amt = Number(document.getElementById("amount").value) || 0;
+            let msg = document.getElementById("msg");
+
+            if (amt <= 0) {
+                msg.innerText = "Enter a valid positive number.";
+                return;
+            }
+
+            if (type === 'deposit') {
+                balance += amt;
+                msg.innerText = `Deposited ₹${amt} successfully.`;
+            } else if (type === 'withdraw') {
+                if (amt > balance) {
+                    msg.innerText = "Insufficient Balance!";
+                    return;
+                }
+                balance -= amt;
+                msg.innerText = `Withdrew ₹${amt} successfully.`;
+            }
+            document.getElementById("balance").innerText = balance;
+        }
+    </script>
+</body>
+</html>

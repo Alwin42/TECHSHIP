@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Password Validator</title>
+    <style>body { font-family: Arial, sans-serif; text-align: center; padding: 20px; } ul { list-style: none; padding: 0; }</style>
+</head>
+<body>
+    <h2>Password Strength Validator</h2>
+    <input type="text" id="pass" placeholder="Enter password"><br><br>
+    <button onclick="validate()">Check Strength</button>
+    <ul id="errors"></ul>
+
+    <script>
+        function validate() {
+            let pwd = document.getElementById("pass").value;
+            let errors = [];
+
+            if (pwd.length < 8) errors.push("Minimum 8 characters required.");
+            if (!/[A-Z]/.test(pwd)) errors.push("Requires an uppercase letter.");
+            if (!/[a-z]/.test(pwd)) errors.push("Requires a lowercase letter.");
+            if (!/[0-9]/.test(pwd)) errors.push("Requires a number.");
+
+            let ul = document.getElementById("errors");
+            ul.innerHTML = ""; 
+            
+            if (errors.length === 0) {
+                ul.innerHTML = "<li style='color:green;'>Strong Password! </li>";
+            } else {
+                errors.forEach(err => {
+                    ul.innerHTML += `<li style='color:red;'> ${err}</li>`;
+                });
+            }
+        }
+    </script>
+</body>
+</html>

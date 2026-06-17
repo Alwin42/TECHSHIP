@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Scholarship Eligibility</title>
+    <style>body { font-family: Arial, sans-serif; text-align: center; padding: 20px; }</style>
+</head>
+<body>
+    <h2>Scholarship Eligibility System</h2>
+    <input type="number" id="percent" placeholder="Academic %"><br><br>
+    <input type="number" id="attend" placeholder="Attendance %"><br><br>
+    <input type="number" id="income" placeholder="Family Income (₹)"><br><br>
+    <button onclick="check()">Check Eligibility</button>
+    <h3 id="result"></h3>
+
+    <script>
+        function check() {
+            let pct = Number(document.getElementById("percent").value) || 0;
+            let att = Number(document.getElementById("attend").value) || 0;
+            let inc = Number(document.getElementById("income").value) || 0;
+            
+            if (pct >= 75 && att >= 85 && inc < 300000) {
+                document.getElementById("result").innerText = "Eligible for Scholarship!";
+            } else {
+                document.getElementById("result").innerText = "Not Eligible.";
+            }
+        }
+    </script>
+</body>
+</html>

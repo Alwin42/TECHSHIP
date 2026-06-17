@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Restaurant Billing</title>
+    <style>body { font-family: Arial, sans-serif; text-align: center; padding: 20px; }</style>
+</head>
+<body>
+    <h2>Restaurant Billing System</h2>
+    <input type="number" id="food" placeholder="Food Amount (₹)"><br><br>
+    <button onclick="calcInvoice()">Generate Invoice</button>
+    <h3 id="result"></h3>
+
+    <script>
+        function calcInvoice() {
+            let food = Number(document.getElementById("food").value) || 0;
+            let gst = food * 0.05; // 5% GST
+            let service = food * 0.10; // 10% Service Charge
+            let discount = food > 1000 ? food * 0.10 : 0; // 10% discount if over 1000
+            
+            let final = (food + gst + service) - discount;
+
+            document.getElementById("result").innerText = 
+                `Food: ₹${food} | GST: ₹${gst} | Service: ₹${service} | Discount: -₹${discount}\nTotal: ₹${final.toFixed(2)}`;
+        }
+    </script>
+</body>
+</html>
