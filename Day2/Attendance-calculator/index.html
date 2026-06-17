@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Attendance Calculator</title>
+</head>
+<body>
+    <div>
+        <h2>Enter the Total Classes Held</h2>
+        <input type="number" id="tot">
+        
+        <h2>Enter the Number of Classes Attended</h2>
+        <input type="number" id="attended">
+        <br><br>
+
+        <button onclick="Attendance()">Check Attendance Percentage</button>
+        
+        <p id="att-percentage"></p>
+        <h3>Eligibility</h3> <label id="eli"></label>
+    </div>
+
+    <script>
+        function Attendance() {
+        
+            let totAttend = Number(document.getElementById("tot").value) || 0;
+            let attendedClass = Number(document.getElementById("attended").value) || 0;
+            
+            let attend_percentage = 0;
+            if (totAttend > 0) {
+                attend_percentage = (attendedClass / totAttend) * 100;
+            }
+            document.getElementById("att-percentage").innerHTML = "Your Attendance Percentage: " + attend_percentage.toFixed(2) + "%";
+            if (attend_percentage < 75)
+            {
+                document.getElementById("eli").innerHTML = "NO";
+            }
+            else
+            {
+                document.getElementById("eli").innerHTML = "Yes";
+            }
+        }
+    </script>
+</body>
+</html>
