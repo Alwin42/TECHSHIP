@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Number Analyzer</title>
+</head>
+<body>
+    <div style="background-color:rgb(255, 255, 255); display:flex; flex-direction:column; align-items:center; padding: 20px; width: 50%; margin: auto; border-radius: 10px;">
+        <h1>Number Analyzer</h1>
+        <input type="number" id="numberInput" placeholder="Enter a number">
+        <br>
+        <button onclick="analyzeNumber()">Analyze</button>
+        <p id="result"></p>
+        <p id="result2"></p>
+    </div>
+</body>
+<script>
+    let number = document.getElementById("numberInput").value;
+    function analyzeNumber()
+    {
+        number = document.getElementById("numberInput").value;
+        if (number > 0)
+        {
+            document.getElementById("result").innerHTML = "The number is positive.";
+        }
+        else if (number < 0)
+        {
+            document.getElementById("result").innerHTML = "The number is negative.";
+        }
+        else
+        {
+            document.getElementById("result").innerHTML = "The number is zero.";
+        }
+
+        if(number % 2 === 0)
+        {
+            document.getElementById("result2").innerHTML = "The number is even.";
+        }
+        else
+        {
+            document.getElementById("result2").innerHTML = "The number is odd.";
+        }
+    }
+</script>
+</html>
