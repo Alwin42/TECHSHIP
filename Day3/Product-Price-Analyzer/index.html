@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Product Price Analyzer</title>
+    <style>body { font-family: Arial; text-align: center; padding: 20px; }</style>
+</head>
+<body>
+    <h2>Product Price Analyzer</h2>
+    <button onclick="analyzePrices()">Analyze Prices</button>
+    <pre id="display"></pre>
+
+    <script>
+        function analyzePrices() {
+            let prices = [250, 150, 900, 50, 420];
+
+            let highest = Math.max(...prices);
+            let lowest = Math.min(...prices);
+
+            let total = 0;
+            for (let i = 0; i < prices.length; i++) {
+                total += prices[i];
+            }
+            let average = total / prices.length;
+
+            document.getElementById("display").innerText = 
+                "Highest Price: ₹" + highest + "\n" +
+                "Lowest Price: ₹" + lowest + "\n" +
+                "Average Price: ₹" + average.toFixed(2);
+        }
+    </script>
+</body>
+</html>

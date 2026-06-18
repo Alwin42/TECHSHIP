@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Simple Expense Tracker</title>
+    <style>
+        body { font-family: Arial, sans-serif; text-align: center; padding: 20px; }
+        input { padding: 10px; font-size: 16px; margin-right: 5px; }
+        button { padding: 10px 15px; font-size: 16px; background-color: #28a745; color: white; border: none; cursor: pointer; }
+        .history { margin-top: 20px; font-size: 18px; color: #555; }
+    </style>
+</head>
+<body>
+
+    <h2>Simple Expense Tracker</h2>
+    
+    <input type="number" id="amount" placeholder="Enter amount (₹)">
+    <button onclick="addExpense()">Add Expense</button>
+
+    <h2>Total Spent: ₹<span id="totalDisplay">0</span></h2>
+    
+    <div class="history" id="historyList">
+        </div>
+
+    <script>
+        
+        let total = 0; 
+
+        function addExpense() {
+            
+            let expense = Number(document.getElementById("amount").value) || 0;
+
+            if (expense > 0) {
+                
+                total = total + expense;
+
+                
+                document.getElementById("totalDisplay").innerText = total;
+
+                
+                document.getElementById("historyList").innerHTML += "Added: ₹" + expense + "<br>";
+
+                
+                document.getElementById("amount").value = "";
+            }
+        }
+    </script>
+
+</body>
+</html>

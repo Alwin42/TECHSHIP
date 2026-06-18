@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Student</title>
+    <style>
+        .result-row {
+            font-size: 24px;
+            font-weight: bold;
+            margin: 10px 0;
+        }
+    </style>
+</head>
+<body>
+    <h2>Enter the marks</h2>
+    <div style="margin-bottom:20px;"> 
+        <input type="number" id="sub1" placeholder="Enter subject 1 mark in 100"><br><br>
+        <input type="number" id="sub2" placeholder="Enter subject 2 mark in 100"><br><br>
+        <input type="number" id="sub3" placeholder="Enter subject 3 mark in 100"><br><br>
+        <input type="number" id="sub4" placeholder="Enter subject 4 mark in 100"><br><br>
+        <input type="number" id="sub5" placeholder="Enter subject 5 mark in 100"><br><br>
+    </div>
+
+    <div>
+        <div class="result-row">Total Marks: <label id="TotalMark"></label></div>
+        <div class="result-row">Average Marks: <label id="AvgMark"></label></div>
+        <div class="result-row">Grade: <label id="Grade"></label></div>
+        <br><br>
+        
+        <button onclick="calculateTotal()">Total Mark</button>
+        <button onclick="calculateAverage()">Total Average</button>
+        <button onclick="calculateGrade()">Total Grade</button>
+    </div>
+
+    <script>
+        function calculateTotal() {
+            let s1 = Number(document.getElementById("sub1").value) || 0;
+            let s2 = Number(document.getElementById("sub2").value) || 0;
+            let s3 = Number(document.getElementById("sub3").value) || 0;
+            let s4 = Number(document.getElementById("sub4").value) || 0;
+            let s5 = Number(document.getElementById("sub5").value) || 0;
+            
+            let totalMark = s1 + s2 + s3 + s4 + s5;
+            
+            
+            document.getElementById("TotalMark").innerHTML = totalMark;
+        }
+
+        function calculateAverage() {
+            let s1 = Number(document.getElementById("sub1").value) || 0;
+            let s2 = Number(document.getElementById("sub2").value) || 0;
+            let s3 = Number(document.getElementById("sub3").value) || 0;
+            let s4 = Number(document.getElementById("sub4").value) || 0;
+            let s5 = Number(document.getElementById("sub5").value) || 0;
+            
+            let AvgMark = (s1 + s2 + s3 + s4 + s5) / 5;
+            
+            
+            document.getElementById("AvgMark").innerHTML = AvgMark;
+        }
+
+        function calculateGrade() {
+            let s1 = Number(document.getElementById("sub1").value) || 0;
+            let s2 = Number(document.getElementById("sub2").value) || 0;
+            let s3 = Number(document.getElementById("sub3").value) || 0;
+            let s4 = Number(document.getElementById("sub4").value) || 0;
+            let s5 = Number(document.getElementById("sub5").value) || 0;
+            
+            
+            let totalMarks = s1 + s2 + s3 + s4 + s5;
+            let maxMarks = 500;
+            let percentage = (totalMarks / maxMarks) * 100;
+
+            let grade = "";
+
+            if (percentage >= 90) {
+                grade = "A";
+            } else if (percentage >= 80) {
+                grade = "B";
+            } else if (percentage >= 70) {
+                grade = "C";
+            } else if (percentage >= 60) {
+                grade = "D";
+            } else {
+                grade = "F";
+            }
+            
+            
+            document.getElementById("Grade").innerHTML = grade;
+        }
+    </script>
+</body>
+</html>

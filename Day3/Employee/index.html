@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Employee</title>
+    <style>
+        body{
+            text-align:center;
+            margin:20px;
+            display:flex;
+            flex-direction:column;
+        }
+    </style>
+</head>
+<body>
+    <div>
+        <h1>Employee Details</h1>
+        <h3 >Enter the name</h3> 
+        <input type="text" id="name"> <br>
+        <h3 >Enter the department</h3>
+        <input type="text" id="dept"> <br>
+        <h3 class="">Enter the salary</h3>
+        <input type="text" id="salary"> <br>
+        <h3 class="">Enter the Experience</h3>
+        <input type="text" id="experience"> <br>
+        <br class=""><br class="">
+        <button onClick ="showEmpoyee()">Show Details</button>
+    </div>
+
+    <div >
+        <h2> Employee Details </h2><br><br>
+        <h3 >Employee Name - </h3>
+        <h3 id="name1"></h3>
+        <h3 >Employee Department - </h3>
+        <h3 id="dept1"></h3>
+        <h3 >Employee Salary -</h3>
+        <h3 id="salary1"></h3>
+        <h3 >Employee Experience - </h3>
+        <h3 id="experience1"></h3>
+    </div>
+</body>
+<script>
+    function showEmpoyee(){
+    var empName = document.getElementById("name").value;
+    var empDept = document.getElementById("dept").value;
+    var Salary = document.getElementById("salary").value;
+    var Experience = document.getElementById("experience").value;
+    document.getElementById("name1").innerHTML= empName;
+    document.getElementById("dept1").innerHTML= empDept;
+    document.getElementById("salary1").innerHTML= Salary;
+    document.getElementById("experience1").innerHTML= Experience;
+    }
+</script>
+</html>

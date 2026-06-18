@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Name formatter</title>
+</head>
+<body>
+    <h2>Enter the name </h2> <br>
+    <input id="name">
+    <br>
+    <button onClick="toUpper()">Format Upper-case</button>
+    <button onClick="toLower()">Format Lower-case</button>
+    <p id="upper"></p>
+    <p id="lower"></p>
+</body>
+<script>
+    function toUpper()
+    {
+        let name=document.getElementById("name").value;
+        let upper=name.toUpperCase();
+        document.getElementById("upper").innerHTML= upper;
+    }
+    function toLower()
+    {
+        let name=document.getElementById("name").value;
+        let lower=name.toLowerCase();
+        document.getElementById("lower").innerHTML=lower;
+    }
+</script>
+</html>
