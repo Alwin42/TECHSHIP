@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Theme Switcher</title>
+    <style>
+        /* 1. Default Light Mode Styles */
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f9;
+            color: #333;
+            text-align: center;
+            padding-top: 50px;
+            transition: background-color 0.3s, color 0.3s; /* Makes the switch smooth */
+        }
+
+        button {
+            padding: 10px 20px;
+            font-size: 16px;
+            cursor: pointer;
+            border: none;
+            border-radius: 5px;
+            background-color: #007bff;
+            color: white;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        }
+
+        /* 2. Dark Mode Styles (Applied only when the body has this class) */
+        body.dark-mode {
+            background-color: #1e1e1e;
+            color: #f4f4f9;
+        }
+
+        /* Optional: Change the button color in dark mode */
+        body.dark-mode button {
+            background-color: #f39c12; 
+        }
+    </style>
+</head>
+<body>
+
+    <h1 id="greeting">Welcome to the Theme Switcher!</h1>
+    <p>Try switching the theme and refreshing the page.</p>
+
+    <button onclick="toggleTheme()" id="themeBtn">Switch Theme</button>
+
+    <script>
+        // --- STEP 1: CHECK MEMORY ON PAGE LOAD ---
+        // This runs instantly when the page is opened.
+        
+        let savedTheme = localStorage.getItem("theme");
+
+        // If the notebook says they like dark mode, turn it on immediately!
+        if (savedTheme === "dark") {
+            document.body.classList.add("dark-mode");
+        }
+
+
+        // --- STEP 2: THE TOGGLE FUNCTION ---
+        // This runs only when the button is clicked.
+        
+        function toggleTheme() {
+            // 1. Toggle the CSS class on the body (turns dark mode on/off)
+            document.body.classList.toggle("dark-mode");
+
+            // 2. Check if the body currently has the dark mode class
+            if (document.body.classList.contains("dark-mode")) {
+                // If it is dark, save "dark" to local storage
+                localStorage.setItem("theme", "dark");
+            } else {
+                // If it is light, save "light" to local storage
+                localStorage.setItem("theme", "light");
+            }
+        }
+    </script>
+</body>
+</html>

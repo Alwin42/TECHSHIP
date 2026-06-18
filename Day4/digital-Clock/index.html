@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Digital Clock</title>
+    <style>
+        body {
+            font-family: 'Courier New', Courier, monospace; 
+            text-align: center;
+            padding-top: 100px;
+            background-color: #1e1e1e;
+            color: #f4f4f9;
+        }
+
+        .clock-container {
+            background-color: #000;
+            display: inline-block;
+            padding: 30px 50px;
+            border-radius: 10px;
+            border: 3px solid #333;
+            box-shadow: 0 0 20px rgba(0, 255, 0, 0.2);
+        }
+
+        
+        #clock {
+            font-size: 64px;
+            font-weight: bold;
+            color: #00ff00; 
+            letter-spacing: 4px;
+            margin: 0;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="clock-container">
+        <p id="clock">00:00:00</p>
+    </div>
+
+    <script>
+        // 1. Create the function that updates the screen
+        function updateTime() {
+            // Grab the current date and time from the computer
+            const now = new Date();
+            
+            // Format it cleanly (e.g., "10:30:15 AM")
+            const timeString = now.toLocaleTimeString();
+            
+            // Push it to the HTML
+            document.getElementById("clock").innerText = timeString;
+        }
+
+        
+        updateTime();
+
+        // 3. Set the interval to run the function every 1000 milliseconds (1 second)
+        setInterval(updateTime, 1000);
+        
+    </script>
+</body>
+</html>

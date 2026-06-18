@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Password Strength Meter</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            padding-top: 50px;
+            background-color: #f4f4f9;
+        }
+
+        .container {
+            background: white;
+            padding: 30px;
+            border-radius: 8px;
+            max-width: 350px;
+            margin: auto;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+        }
+
+        input {
+            width: 90%;
+            padding: 10px;
+            font-size: 16px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            margin-bottom: 15px;
+        }
+
+        h3 {
+            margin: 0;
+            color: #333;
+        }
+
+        /* 1. We define our color classes in CSS */
+        .weak { color: #dc3545; }      /* Red */
+        .medium { color: #ffc107; }    /* Yellow */
+        .strong { color: #28a745; }    /* Green */
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <h2>Create Password</h2>
+        <input type="password" id="passwordInput" placeholder="Enter password...">
+        
+        <h3>Strength: <span id="strengthDisplay">None</span></h3>
+    </div>
+
+    <script>
+        // 1. Grab the elements
+        const passwordInput = document.getElementById("passwordInput");
+        const strengthDisplay = document.getElementById("strengthDisplay");
+
+        // 2. Listen for every keystroke
+        passwordInput.addEventListener("input", function() {
+            
+            // Get the current text typed in the box
+            let password = passwordInput.value;
+            // Default states
+            let strengthText = "Weak";
+            let strengthClass = "weak";
+
+            // If the box is completely empty
+            if (password.length === 0) {
+                strengthDisplay.innerText = "None";
+                strengthDisplay.className = ""; // Remove all color classes
+                return; // Stop the function here
+            }
+
+            // 3. The Logic Check
+            // Check for numbers, uppercase, and special characters using Regex
+            let hasNumber = /[0-9]/.test(password);
+            let hasUpper = /[A-Z]/.test(password);
+            let hasSpecial = /[!\@\#\$\%\^\&\*]/.test(password);
+
+            // STRONG: 8+ chars, has a number, an uppercase letter, AND a special character
+            if (password.length >= 8 && hasNumber && hasUpper && hasSpecial) {
+                strengthText = "Strong";
+                strengthClass = "strong";
+            } 
+            // MEDIUM: 6+ chars, has at least a number OR an uppercase letter
+            else if (password.length >= 6 && (hasNumber || hasUpper)) {
+                strengthText = "Medium";
+                strengthClass = "medium";
+            }
+            // WEAK: Everything else defaults to Weak
+
+            // 4. Update the screen
+            strengthDisplay.innerText = strengthText;
+            
+            // Overwrite whatever class it had before with the new color class
+            strengthDisplay.className = strengthClass; 
+        });
+    </script>
+</body>
+</html>

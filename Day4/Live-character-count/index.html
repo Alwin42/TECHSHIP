@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Live Character Counter</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            padding-top: 50px;
+            background-color: #f9f9f9;
+        }
+        
+        .container {
+            background: white;
+            padding: 20px;
+            border-radius: 8px;
+            max-width: 400px;
+            margin: auto;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+        }
+
+        textarea {
+            width: 90%;
+            height: 100px;
+            padding: 10px;
+            font-size: 16px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            resize: none; /* Stops the user from dragging the box to make it bigger */
+        }
+
+        .counter-text {
+            font-size: 18px;
+            font-weight: bold;
+            color: #333;
+            margin-top: 15px;
+        }
+
+        /* We will use JavaScript to add this class if they run out of space */
+        .limit-reached {
+            color: #dc3545; 
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <h2>Write a Message</h2>
+        
+        <textarea id="messageBox" placeholder="Start typing here..." maxlength="250"></textarea>
+        
+        <div class="counter-text">
+            Characters Remaining: <span id="charCount">250</span>
+        </div>
+    </div>
+
+    <script>
+        // 1. Grab the elements from the HTML
+        const messageBox = document.getElementById("messageBox");
+        const charCountDisplay = document.getElementById("charCount");
+        
+        // 2. Set our maximum limit
+        const MAX_CHARS = 250;
+
+        // 3. Add an Event Listener that fires every time the text changes
+        messageBox.addEventListener("input", function() {
+            
+            // Get the current length of whatever is typed in the box
+            let currentLength = messageBox.value.length;
+            
+            // Calculate how many characters are left
+            let remaining = MAX_CHARS - currentLength;
+            
+            // Update the number on the screen
+            charCountDisplay.innerText = remaining;
+
+            // Optional Polish: Turn the text red if they hit 0
+            if (remaining === 0) {
+                charCountDisplay.classList.add("limit-reached");
+            } else {
+                charCountDisplay.classList.remove("limit-reached");
+            }
+            
+        });
+    </script>
+</body>
+</html>
