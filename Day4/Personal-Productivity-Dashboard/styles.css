@@ -1,7 +1,6 @@
-/* Fixed: Removed the period so it targets the body element */
 body {
     background-color: #FFF4E1;
-    font-family: 'Poppins', sans-serif; /* Applied to whole page */
+    font-family: 'Poppins', sans-serif; 
     margin: 0;
     padding: 20px;
 }
@@ -14,253 +13,71 @@ body {
     margin-top: 20px;
 }
 
-/* New container to align the navbar and moon icon */
-.nav-container {
-    display: flex;
-    align-items: center;
-    gap: 20px;
-}
+.nav-container { display: flex; align-items: center; gap: 20px; }
 
 .navbar {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    background-color: #428475;
-    color: white;
-    padding: 15px 40px;
-    border-radius: 30px;
-    font-size: 18px;
-    font-weight: 500;
-    gap: 40px;
+    display: flex; align-items: center; justify-content: center;
+    background-color: #428475; color: white;
+    padding: 15px 40px; border-radius: 30px;
+    font-size: 18px; font-weight: 500; gap: 40px;
 }
+.navbar a { color: white; text-decoration: none; }
+.moon-icon { font-size: 28px; color: #1A312C; cursor: pointer; }
 
-/* Style the links inside the navbar */
-.navbar a {
-    color: white;
-    text-decoration: none;
-}
+/* DARK MODE */
+body.dark-mode { background-color: #121212; color: #ffffff; }
+body.dark-mode .header h2, body.dark-mode .section-header h2, body.dark-mode .section-header p { color: #FFF4E1; }
+body.dark-mode .content-card, body.dark-mode .card1, body.dark-mode .navbar { background-color: #2A4F46; }
+body.dark-mode .moon-icon { color: #FFF4E1; }
 
-
-.moon-icon {
-    font-size: 28px;
-    color: #1A312C; /* Dark green */
-    cursor: pointer;
-}
-.sun-icon{
-    font-size: 28px;
-    color: #1A312C; /* Dark green */
-    cursor: pointer;
-}
-body.dark-mode {
-    background-color: #121212; /* Dark background */
-    color: #ffffff; /* Light text */
-}
-
-body.dark-mode .header h2,
-body.dark-mode .section-header h2,
-body.dark-mode .section-header p {
-    color: #FFF4E1; 
-}
-
-
-body.dark-mode .content-card,
-body.dark-mode .card1,
-body.dark-mode .navbar {
-    background-color: #2A4F46; 
-}
-
-body.dark-mode .moon-icon {
-    color: #FFF4E1; 
-}
+/* CARDS */
 .cards {
-    display: grid;
-    grid-template-columns: 1fr 1fr 1fr;
-    gap: 30px; 
-    padding: 40px;
-    max-width: 1200px;
-    margin: 0 auto; 
+    display: grid; grid-template-columns: 1fr 1fr 1fr;
+    gap: 30px; padding: 40px; max-width: 1200px; margin: 0 auto; 
 }
-
 .card1 {
-    background-color: #428475;
-    border-radius: 30px;
-    color: aliceblue;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    padding: 40px 20px;
-    min-height: 350px; /* Gives the tall appearance from Figma */
+    background-color: #428475; border-radius: 30px; color: aliceblue;
+    display: flex; flex-direction: column; align-items: center;
+    padding: 40px 20px; min-height: 250px; 
 }
+.card1 h3 { font-size: 24px; margin-bottom: 20px; margin-top: 0; }
+.card-content { text-align: center; list-style-type: none; padding: 0; margin: 0; line-height: 1.8; }
 
-.card1 h3 {
-    font-size: 24px;
-    margin-bottom: 30px;
-    margin-top: 0;
-}
+/* SECTIONS */
+.section-container { max-width: 900px; margin: 60px auto; padding: 0 20px; }
+.section-header { text-align: left; color: #1A312C; margin-bottom: 20px; border-bottom: 2px solid #428475; padding-bottom: 10px; }
+.section-header h2 { margin: 0 0 5px 0; font-size: 28px; }
+.section-header p { margin: 0; color: #555; font-size: 14px; }
+.content-card { background-color: #428475; border-radius: 20px; color: aliceblue; padding: 30px 40px; box-shadow: 0 4px 10px rgba(0,0,0,0.1); }
+.content-card h3 { margin-top: 0; margin-bottom: 20px; font-size: 22px; }
 
-.card-content {
-    text-align: center;
-    list-style-type: none; 
-    padding: 0;
-    margin: 0;
-    line-height: 1.8;
-}
+/* NEW: INPUT GROUPS */
+.input-group { display: flex; gap: 10px; margin-bottom: 20px; }
+.input-group input { flex: 1; padding: 10px; border-radius: 8px; border: none; font-family: 'Poppins', sans-serif; }
 
-.section-container {
-    max-width: 900px;
-    margin: 60px auto; 
-    padding: 0 20px;
-}
+/* LISTS & ITEMS */
+.list-group { list-style: none; padding: 0; margin: 0; }
+.list-item { display: flex; justify-content: space-between; align-items: center; padding: 15px 0; border-bottom: 1px solid rgba(255, 255, 255, 0.2); font-size: 16px; }
+.list-item:last-child { border-bottom: none; }
 
+/* NEW: TASK & NOTE ACTIONS */
+.task-actions { display: flex; align-items: center; gap: 15px; }
+.task-check { width: 20px; height: 20px; cursor: pointer; }
+.completed-text { text-decoration: line-through; opacity: 0.6; }
+.icon-btn { background: none; border: none; font-size: 20px; cursor: pointer; color: white; transition: 0.3s; }
+.icon-btn.edit:hover { color: #feca57; }
+.icon-btn.delete:hover { color: #ff6b6b; }
 
-.section-header {
-    text-align: left;
-    color: #1A312C; 
-    margin-bottom: 20px;
-    border-bottom: 2px solid #428475;
-    padding-bottom: 10px;
-}
+.links { display: flex; gap: 15px; }
+.links a { color: #FFF4E1; text-decoration: none; display: flex; align-items: center; gap: 5px; background: rgba(0, 0, 0, 0.2); padding: 5px 10px; border-radius: 8px; transition: 0.3s; }
+.links a:hover { background: rgba(0, 0, 0, 0.4); }
 
-.section-header h2 {
-    margin: 0 0 5px 0;
-    font-size: 28px;
-}
-
-.section-header p {
-    margin: 0;
-    color: #555;
-    font-size: 14px;
-}
-
-.content-card {
-    background-color: #428475;
-    border-radius: 20px;
-    color: aliceblue;
-    padding: 30px 40px;
-    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
-}
-
-.content-card h3 {
-    margin-top: 0;
-    margin-bottom: 20px;
-    font-size: 22px;
-}
-
-.list-group {
-    list-style: none; 
-    padding: 0;
-    margin: 0;
-}
-
-.list-item {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 15px 0;
-    border-bottom: 1px solid rgba(255, 255, 255, 0.2); 
-    font-size: 16px;
-}
-
-
-.list-item:last-child {
-    border-bottom: none;
-}
-
-
-.task-check {
-    width: 20px;
-    height: 20px;
-    cursor: pointer;
-}
-
-
-.links {
-    display: flex;
-    gap: 15px;
-}
-
-.links a {
-    color: #FFF4E1; 
-    text-decoration: none;
-    display: flex;
-    align-items: center;
-    gap: 5px;
-    background: rgba(0, 0, 0, 0.2);
-    padding: 5px 10px;
-    border-radius: 8px;
-    transition: 0.3s;
-}
-
-.links a:hover {
-    background: rgba(0, 0, 0, 0.4);
-}
-
-.action-btn {
-    background-color: #1A312C;
-    color: white;
-    border: none;
-    padding: 10px 20px;
-    border-radius: 8px;
-    cursor: pointer;
-    font-family: 'Poppins', sans-serif;
-    margin-top: 15px;
-    transition: 0.3s;
-}
-
-.action-btn:hover {
-    background-color: #12221e;
-}
-
-.cancel-btn {
-    background-color: transparent;
-    color: #333;
-    border: 1px solid #ccc;
-    padding: 10px 20px;
-    border-radius: 8px;
-    cursor: pointer;
-}
-
-/* The dark background behind the modal */
-.modal-backdrop {
-    display: none; /* Hidden by default! JavaScript will change this to 'flex' */
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background-color: rgba(0, 0, 0, 0.6);
-    justify-content: center;
-    align-items: center;
-    z-index: 1000; /* Ensures it sits on top of everything else */
-}
-
-/* The actual white box holding the inputs */
-.modal-box {
-    background-color: white;
-    padding: 30px;
-    border-radius: 15px;
-    width: 300px;
-    color: #333;
-    display: flex;
-    flex-direction: column;
-    gap: 15px;
-    box-shadow: 0 10px 25px rgba(0,0,0,0.2);
-}
-
-.modal-box h3 {
-    margin: 0;
-    color: #1A312C;
-}
-
-.modal-box input {
-    padding: 10px;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-    font-family: 'Poppins', sans-serif;
-}
-
-.modal-actions {
-    display: flex;
-    justify-content: space-between;
-    margin-top: 10px;
-}
+/* BUTTONS & MODAL */
+.action-btn { background-color: #1A312C; color: white; border: none; padding: 10px 20px; border-radius: 8px; cursor: pointer; font-family: 'Poppins', sans-serif; transition: 0.3s; }
+.action-btn:hover { background-color: #12221e; }
+.cancel-btn { background-color: transparent; color: #333; border: 1px solid #ccc; padding: 10px 20px; border-radius: 8px; cursor: pointer; }
+.modal-backdrop { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background-color: rgba(0, 0, 0, 0.6); justify-content: center; align-items: center; z-index: 1000; }
+.modal-box { background-color: white; padding: 30px; border-radius: 15px; width: 300px; color: #333; display: flex; flex-direction: column; gap: 15px; box-shadow: 0 10px 25px rgba(0,0,0,0.2); }
+.modal-box h3 { margin: 0; color: #1A312C; }
+.modal-box input { padding: 10px; border: 1px solid #ccc; border-radius: 5px; font-family: 'Poppins', sans-serif; }
+.modal-actions { display: flex; justify-content: space-between; margin-top: 10px; }

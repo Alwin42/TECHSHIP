@@ -17,16 +17,15 @@
                     <a href="#home">Home</a>
                     <a href="#tasks">Task</a>
                     <a href="#notes">Notes</a>
-                    <a href="#">Dashboard</a>
                 </nav>
                 <ion-icon name="moon-outline" class="moon-icon" id="themeToggle"></ion-icon>
-                
             </div>
             <h2 class="heading">Welcome User</h2> 
         </div>
 
         <div class="dashboard">
             <div class="cards">
+                
                 <div class="card1"> 
                     <h3>Profile</h3>
                     <div class="card-content">
@@ -37,33 +36,22 @@
                     <button id="editProfileBtn" class="action-btn">Add Details</button>
                 </div>
 
-                <div id="profileModal" class="modal-backdrop">
-                    <div class="modal-box">
-                        <h3>Edit Profile</h3>
-                        <input type="text" id="inputName" placeholder="Enter Name">
-                        <input type="email" id="inputEmail" placeholder="Enter Email">
-                        <input type="text" id="inputRole" placeholder="Enter Role">
-                        
-                        <div class="modal-actions">
-                            <button id="closeModalBtn" class="cancel-btn">Cancel</button>
-                            <button id="saveProfileBtn" class="action-btn">Save Details</button>
-                        </div>
-                    </div>
-                </div>
                 <div class="card1"> 
-                    <h3>Total Tasks</h3>
-                    <ul class="card-content">
-                        <li>Buy Books <ion-icon name="checkmark-outline"></ion-icon></li>
-                    </ul>
-                </div>
-                <div class="card1"> 
-                    <h3>Total Notes</h3>
+                    <h3>Task Stats</h3>
                     <div class="card-content">
-                        <p>Name</p>
-                        <p>Email</p>
-                        <p>Role</p>
+                        <p>Total Tasks: <strong id="statTotalTasks">0</strong></p>
+                        <p>Completed: <strong id="statCompletedTasks">0</strong></p>
+                        <p>Pending: <strong id="statPendingTasks">0</strong></p>
                     </div>
                 </div>
+
+                <div class="card1"> 
+                    <h3>Notes Stats</h3>
+                    <div class="card-content">
+                        <p>Total Notes: <strong id="statTotalNotes">0</strong></p>
+                    </div>
+                </div>
+
             </div>
         </div>
     </section>
@@ -76,20 +64,13 @@
         
         <div class="content-card"> 
             <h3>To-Do List</h3>
-            <ul class="list-group">
-                <li class="list-item">
-                    <span>Complete Math Assignment</span> 
-                    <input type="checkbox" class="task-check">
-                </li>
-                <li class="list-item">
-                    <span>Email Professor regarding project</span> 
-                    <input type="checkbox" class="task-check">
-                </li>
-                <li class="list-item">
-                    <span>Read Chapter 4 for Biology</span> 
-                    <input type="checkbox" class="task-check">
-                </li>
-            </ul>
+            
+            <div class="input-group">
+                <input type="text" id="newTaskInput" placeholder="Enter a new task...">
+                <button id="addTaskBtn" class="action-btn">Add Task</button>
+            </div>
+
+            <ul class="list-group" id="taskList"></ul>
         </div>
     </section>
 
@@ -101,24 +82,30 @@
         
         <div class="content-card"> 
             <h3>Saved Resources</h3>
-            <ul class="list-group">
-                <li class="list-item">
-                    <span><strong>Physics Kinematics</strong></span> 
-                    <div class="links">
-                        <a href="#"><ion-icon name="logo-youtube"></ion-icon> Video</a>
-                        <a href="#"><ion-icon name="document-text-outline"></ion-icon> Doc</a>
-                    </div>
-                </li>
-                <li class="list-item">
-                    <span><strong>History Essay Draft</strong></span> 
-                    <div class="links">
-                        <a href="#"><ion-icon name="document-text-outline"></ion-icon> Doc</a>
-                    </div>
-                </li>
-            </ul>
+            
+            <div class="input-group">
+                <input type="text" id="newNoteTitle" placeholder="Note Title...">
+                <input type="text" id="newNoteLink" placeholder="URL Link (Optional)...">
+                <button id="addNoteBtn" class="action-btn">Save Note</button>
+            </div>
+
+            <ul class="list-group" id="noteList"></ul>
         </div>
     </section>
-<script src="script.js"></script>
-</body>
 
+    <div id="profileModal" class="modal-backdrop">
+        <div class="modal-box">
+            <h3>Edit Profile</h3>
+            <input type="text" id="inputName" placeholder="Enter Name">
+            <input type="email" id="inputEmail" placeholder="Enter Email">
+            <input type="text" id="inputRole" placeholder="Enter Role">
+            <div class="modal-actions">
+                <button id="closeModalBtn" class="cancel-btn">Cancel</button>
+                <button id="saveProfileBtn" class="action-btn">Save Details</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
 </html>
