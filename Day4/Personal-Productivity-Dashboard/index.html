@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Personal Dashboard</title>
+    <link rel="stylesheet" href="styles.css">
+    <script type="module" src="https://unpkg.com/ionicons@8.0.13/dist/ionicons/ionicons.esm.js"></script>
+    <script nomodule src="https://unpkg.com/ionicons@8.0.13/dist/ionicons/ionicons.js"></script>
+</head>
+<body>
+    
+    <section id="home">
+        <div class="header">
+            <div class="nav-container">
+                <nav class="navbar">
+                    <a href="#home">Home</a>
+                    <a href="#tasks">Task</a>
+                    <a href="#notes">Notes</a>
+                    <a href="#">Dashboard</a>
+                </nav>
+                <ion-icon name="moon-outline" class="moon-icon" id="themeToggle"></ion-icon>
+                
+            </div>
+            <h2 class="heading">Welcome User</h2> 
+        </div>
+
+        <div class="dashboard">
+            <div class="cards">
+                <div class="card1"> 
+                    <h3>Profile</h3>
+                    <div class="card-content">
+                        <p><strong>Name:</strong> <span id="displayName">Not set</span></p>
+                        <p><strong>Email:</strong> <span id="displayEmail">Not set</span></p>
+                        <p><strong>Role:</strong> <span id="displayRole">Not set</span></p>
+                    </div>
+                    <button id="editProfileBtn" class="action-btn">Add Details</button>
+                </div>
+
+                <div id="profileModal" class="modal-backdrop">
+                    <div class="modal-box">
+                        <h3>Edit Profile</h3>
+                        <input type="text" id="inputName" placeholder="Enter Name">
+                        <input type="email" id="inputEmail" placeholder="Enter Email">
+                        <input type="text" id="inputRole" placeholder="Enter Role">
+                        
+                        <div class="modal-actions">
+                            <button id="closeModalBtn" class="cancel-btn">Cancel</button>
+                            <button id="saveProfileBtn" class="action-btn">Save Details</button>
+                        </div>
+                    </div>
+                </div>
+                <div class="card1"> 
+                    <h3>Total Tasks</h3>
+                    <ul class="card-content">
+                        <li>Buy Books <ion-icon name="checkmark-outline"></ion-icon></li>
+                    </ul>
+                </div>
+                <div class="card1"> 
+                    <h3>Total Notes</h3>
+                    <div class="card-content">
+                        <p>Name</p>
+                        <p>Email</p>
+                        <p>Role</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="tasks" class="section-container">
+        <div class="section-header">
+            <h2>Tasks</h2>
+            <p>Add & manage your daily tasks</p>
+        </div>
+        
+        <div class="content-card"> 
+            <h3>To-Do List</h3>
+            <ul class="list-group">
+                <li class="list-item">
+                    <span>Complete Math Assignment</span> 
+                    <input type="checkbox" class="task-check">
+                </li>
+                <li class="list-item">
+                    <span>Email Professor regarding project</span> 
+                    <input type="checkbox" class="task-check">
+                </li>
+                <li class="list-item">
+                    <span>Read Chapter 4 for Biology</span> 
+                    <input type="checkbox" class="task-check">
+                </li>
+            </ul>
+        </div>
+    </section>
+
+    <section id="notes" class="section-container">
+        <div class="section-header">
+            <h2>Notes</h2>
+            <p>Add & manage your study materials</p>
+        </div>
+        
+        <div class="content-card"> 
+            <h3>Saved Resources</h3>
+            <ul class="list-group">
+                <li class="list-item">
+                    <span><strong>Physics Kinematics</strong></span> 
+                    <div class="links">
+                        <a href="#"><ion-icon name="logo-youtube"></ion-icon> Video</a>
+                        <a href="#"><ion-icon name="document-text-outline"></ion-icon> Doc</a>
+                    </div>
+                </li>
+                <li class="list-item">
+                    <span><strong>History Essay Draft</strong></span> 
+                    <div class="links">
+                        <a href="#"><ion-icon name="document-text-outline"></ion-icon> Doc</a>
+                    </div>
+                </li>
+            </ul>
+        </div>
+    </section>
+<script src="script.js"></script>
+</body>
+
+</html>
