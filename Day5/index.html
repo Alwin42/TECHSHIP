@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard - Library App</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    
+    <div id="app-container" class="hidden">
+        <nav class="navbar">
+            <h2 id="welcome-message">LibraryApp</h2>
+            <button id="logout-btn">Logout</button>
+        </nav>
+
+        <main class="hero-section">
+            <div class="card book-management">
+                <h3 id="form-title">Add a New Book</h3>
+                <form id="book-form">
+                    <input type="hidden" id="book-id">
+                    <input type="text" id="book-title" placeholder="Book Title" required>
+                    <input type="text" id="book-author" placeholder="Author Name" required>
+                    <input type="text" id="book-category" placeholder="Category" required>
+                    <input type="number" id="book-year" placeholder="Publication Year" required>
+                    <button type="submit" id="book-submit-btn">Add Book</button>
+                </form>
+            </div>
+
+            <div class="card book-list">
+                <h3>Library Collection</h3>
+                <div class="table-responsive">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Title</th>
+                                <th>Author</th>
+                                <th>Category</th>
+                                <th>Year</th>
+                                <th>Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody id="book-table-body">
+                            </tbody>
+                    </table>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <script src="app.js"></script>
+</body>
+</html>
