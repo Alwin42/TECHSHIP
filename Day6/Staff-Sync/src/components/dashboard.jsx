@@ -14,22 +14,47 @@ function Dashboard() {
   const [formData, setFormData] = useState({
     name: '', employeeId: '', dept: '', address: '', skill: '', year: ''
   });
-
   
+  
+  const [editEmployeeId, setEditEmployeeId] = useState(null);
+
   useEffect(() => {
     localStorage.setItem('staffSyncData', JSON.stringify(employees));
   }, [employees]);
 
-  
   const handleInputChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
 
-  const handleAddEmployee = (e) => {
+  
+  const handleSubmit = (e) => {
     e.preventDefault();
     if (!formData.name || !formData.employeeId) return; 
-    setEmployees([...employees, formData]);
+
+    if (editEmployeeId) {
+      
+      const updatedEmployees = employees.map((emp) => 
+        emp.employeeId === editEmployeeId ? formData : emp
+      );
+      setEmployees(updatedEmployees);
+      setEditEmployeeId(null); 
+    } else {
+      
+      setEmployees([...employees, formData]);
+    }
     
+    
+    setFormData({ name: '', employeeId: '', dept: '', address: '', skill: '', year: '' });
+  };
+
+  
+  const handleEditClick = (employee) => {
+    setEditEmployeeId(employee.employeeId);
+    setFormData(employee);
+  };
+
+  const handleCancelEdit = () => {
+    setEditEmployeeId(null);
     setFormData({ name: '', employeeId: '', dept: '', address: '', skill: '', year: '' });
   };
 
@@ -41,12 +66,9 @@ function Dashboard() {
     emp.name.toLowerCase().includes(searchQuery.toLowerCase())
   );
 
-  
   return (
     <div className="min-h-screen bg-gray-50 p-8 font-sans flex justify-center">
       <div className="max-w-6xl w-full grid grid-cols-1 md:grid-cols-2 gap-8">
-        
-        
         <div className="flex flex-col gap-8">
           
           <div className="bg-white border-2 border-black p-6 rounded-lg shadow-[4px_4px_0px_rgba(0,0,0,1)]">
@@ -56,15 +78,28 @@ function Dashboard() {
           </div>
 
           <div className="bg-white border-2 border-black p-6 rounded-lg shadow-[4px_4px_0px_rgba(0,0,0,1)]">
-            <h2 className="text-xl font-bold text-black mb-6 border-b-2 border-black pb-2">Add Employee</h2>
-            <form onSubmit={handleAddEmployee} className="flex flex-col gap-4">
+            
+            <h2 className="text-xl font-bold text-black mb-6 border-b-2 border-black pb-2">
+              {editEmployeeId ? "Edit Employee" : "Add Employee"}
+            </h2>
+            
+            <form onSubmit={handleSubmit} className="flex flex-col gap-4">
               <div className="grid grid-cols-3 items-center">
                 <label className="font-bold text-sm">Name :</label>
                 <input type="text" name="name" value={formData.name} onChange={handleInputChange} className="col-span-2 border border-black p-2 outline-none focus:ring-2 focus:ring-black" required/>
               </div>
               <div className="grid grid-cols-3 items-center">
                 <label className="font-bold text-sm">Employee ID :</label>
-                <input type="text" name="employeeId" value={formData.employeeId} onChange={handleInputChange} className="col-span-2 border border-black p-2 outline-none focus:ring-2 focus:ring-black" required/>
+                <input 
+                  type="text" 
+                  name="employeeId" 
+                  value={formData.employeeId} 
+                  onChange={handleInputChange} 
+                  
+                  readOnly={!!editEmployeeId} 
+                  className={`col-span-2 border border-black p-2 outline-none focus:ring-2 focus:ring-black ${editEmployeeId ? 'bg-gray-200 cursor-not-allowed' : ''}`} 
+                  required
+                />
               </div>
               <div className="grid grid-cols-3 items-center">
                 <label className="font-bold text-sm">Dept :</label>
@@ -82,14 +117,24 @@ function Dashboard() {
                 <label className="font-bold text-sm">Joined Year :</label>
                 <input type="text" name="year" value={formData.year} onChange={handleInputChange} className="col-span-2 border border-black p-2 outline-none focus:ring-2 focus:ring-black" />
               </div>
-              <button type="submit" className="mt-6 bg-black text-white font-bold py-3 rounded hover:bg-gray-800 transition-colors border-2 border-black">
-                Add
-              </button>
+              
+              
+              <div className="flex gap-4 mt-4">
+                <button type="submit" className="flex-1 bg-black text-white font-bold py-3 rounded hover:bg-gray-800 transition-colors border-2 border-black">
+                  {editEmployeeId ? "Update Employee" : "Add Employee"}
+                </button>
+                
+                {editEmployeeId && (
+                  <button type="button" onClick={handleCancelEdit} className="flex-1 bg-white text-black font-bold py-3 rounded hover:bg-gray-200 transition-colors border-2 border-black">
+                    Cancel
+                  </button>
+                )}
+              </div>
             </form>
           </div>
         </div>
 
-    
+        
         <div className="flex flex-col gap-8">
           
           <div className="bg-white border-2 border-black p-6 rounded-lg shadow-[4px_4px_0px_rgba(0,0,0,1)]">
@@ -118,7 +163,11 @@ function Dashboard() {
                       <p><strong>Joined:</strong> {emp.year}</p>
                     </div>
                     <div className="flex gap-2 justify-end">
-                      <button className="bg-white text-black border-2 border-black px-4 py-1 font-bold hover:bg-gray-200 transition-colors">
+                      
+                      <button 
+                        onClick={() => handleEditClick(emp)}
+                        className="bg-white text-black border-2 border-black px-4 py-1 font-bold hover:bg-gray-200 transition-colors"
+                      >
                         Edit
                       </button>
                       <button 
