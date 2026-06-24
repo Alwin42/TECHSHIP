@@ -15,12 +15,11 @@ function Home() {
           Manage your users, track projects, and automate your entire workflow securely from one place.
         </p>
         <div>
+            <a href="/dashboard">
           <Button variant="primary" size="lg" className="me-3 shadow-sm px-4">
             Go to Dashboard
-          </Button>
-          <Button variant="outline-secondary" size="lg" className="shadow-sm px-4">
-            View Settings
-          </Button>
+          </Button></a>
+          
         </div>
       </div>
       

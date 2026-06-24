@@ -1,7 +1,5 @@
 
 body {
-  align-items:center;
-  justify-content:center;
   transition: background-color 0.3s ease, color 0.3s ease;
   margin: 0;
   font-family: sans-serif;
@@ -9,7 +7,7 @@ body {
 
 
 .theme-light {
-  background-color: #f8f9fa; 
+  background-color: #f8f9fa;
   color: #212529; 
 }
 
@@ -23,6 +21,7 @@ body {
   color: #e0f2fe; 
 }
 
+
 .theme-button {
   padding: 10px 20px;
   margin: 5px;
@@ -30,8 +29,7 @@ body {
   border-radius: 5px;
   cursor: pointer;
   background: transparent;
-  color: inherit; 
-}
+  color: inherit; }
 
 .theme-button:hover {
   opacity: 0.8;
