@@ -17,31 +17,19 @@ function NavScrollExample() {
             style={{ maxHeight: '100px' }}
             navbarScroll
           >
-            <Nav.Link href="#action1">Home</Nav.Link>
-            <Nav.Link href="#action2">Dashboard</Nav.Link>
+            <Nav.Link href="/">Home</Nav.Link>
+            <Nav.Link href="/dashboard">Dashboard</Nav.Link>
             <NavDropdown title="Manage" id="navbarScrollingDropdown">
-              <NavDropdown.Item href="#action3">Users</NavDropdown.Item>
-              <NavDropdown.Item href="#action4">
-                Project
-              </NavDropdown.Item>
+              <NavDropdown.Item href="/users">Users</NavDropdown.Item>
+              <NavDropdown.Item href="/projects">Project</NavDropdown.Item>
               <NavDropdown.Divider />
-              <NavDropdown.Item href="#action5">
+              <NavDropdown.Item href="/profile">
                 My Profile
               </NavDropdown.Item>
             </NavDropdown>
-            <Nav.Link href="#" disabled>
-             Logout 
-            </Nav.Link>
+            
           </Nav>
-          <Form className="d-flex">
-            <Form.Control
-              type="search"
-              placeholder="Search"
-              className="me-2"
-              aria-label="Search"
-            />
-            <Button variant="outline-success">Search</Button>
-          </Form>
+          
         </Navbar.Collapse>
       </Container>
     </Navbar>
