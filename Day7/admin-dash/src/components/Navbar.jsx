@@ -1,13 +1,16 @@
+import React from 'react';
 import Button from 'react-bootstrap/Button';
 import Container from 'react-bootstrap/Container';
-import Form from 'react-bootstrap/Form';
 import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
 import NavDropdown from 'react-bootstrap/NavDropdown';
+import { useTheme } from './theme';
 
 function NavScrollExample() {
+  const { theme, toggleTheme } = useTheme();
+
   return (
-    <Navbar expand="lg" className="bg-body-tertiary">
+    <Navbar expand="lg" className="bg-body-tertiary mb-4 shadow-sm">
       <Container fluid>
         <Navbar.Brand href="#">Admin-dash</Navbar.Brand>
         <Navbar.Toggle aria-controls="navbarScroll" />
@@ -27,8 +30,15 @@ function NavScrollExample() {
                 My Profile
               </NavDropdown.Item>
             </NavDropdown>
-            
           </Nav>
+          
+          <Button 
+            variant={theme === 'light' ? 'outline-dark' : 'outline-light'} 
+            onClick={toggleTheme}
+            className="d-flex align-items-center"
+          >
+            {theme === 'light' ? ' Dark Mode' : ' Light Mode'}
+          </Button>
           
         </Navbar.Collapse>
       </Container>
