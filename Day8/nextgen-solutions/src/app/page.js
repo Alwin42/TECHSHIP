@@ -1,3 +1,4 @@
+import Link from 'next/link';
 export default function Home() {
   return (
     <div className="grid grid-cols-1 mt-9 items-center justify-center">
@@ -28,11 +29,21 @@ export default function Home() {
         </div>
       </div>
 
-      <div>
-        <button>About Us</button>
-        <button>Service</button>
-        <button>Contact</button>
-      </div>
+      <div className="flex items-center justify-center gap-8">
+
+      <Link href="/about"className="bg-blue-700 text-white px-2 py-2 rounded-lg text-center inline-block w-24">
+        About Us
+      </Link>
+      
+      <Link href="/service"className="bg-blue-600 text-white px-4 py-2 rounded-lg text-center inline-block w-24">
+        Service
+      </Link>
+      <Link href="/contact"className="bg-blue-600 text-white px-4 py-2 rounded-lg text-center inline-block w-24">
+        Contact
+      </Link>
+      
+      
+    </div>
     </div>
   );
 }
