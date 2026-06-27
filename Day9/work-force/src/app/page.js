@@ -41,13 +41,6 @@ export default function Home() {
 
         {/* Right Column: Illustration */}
         <div className="relative w-full aspect-video lg:aspect-square flex justify-center items-center">
-           {/* Placeholder for your illustration. 
-             Save your exported image to the 'public' folder (e.g., public/hero.png) 
-             and swap this div with the Image component below.
-           */}
-           <div className="w-full h-full bg-slate-50 border-2 border-dashed border-slate-200 rounded-2xl flex flex-col items-center justify-center text-slate-500 p-6 text-center">
-             
-           </div>
 
            {<Image
              src="/work.png"
